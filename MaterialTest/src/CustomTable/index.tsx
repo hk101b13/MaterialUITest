@@ -3,6 +3,8 @@ import { ColumnsType } from "antd/lib/table";
 import { CSSProperties } from "react";
 import styled, { Interpolation } from "@emotion/styled";
 import { Theme } from "@emotion/react";
+import { ThemeContext } from "../ThemeCustomeProvider";
+import React from "react";
 
 interface Props {
   autoScroll?: boolean;
@@ -22,17 +24,68 @@ interface Props {
   loading?: boolean;
   customStyle?: Interpolation<Theme>;
   containerStyle?: Interpolation<Theme>;
+  // rowColor?: string;
+  // headerColor?: string;
+  tableStyle?: {
+    headerColor?: string;
+    rowColor?: string;
+    hoverRowColor?: string;
+  };
 }
 
-const StyleDiv = styled.div<Props>`
-  ${(props) => props.containerStyle}
-`;
-
-const StyledTable = styled(Table)<Props>`
-  ${(props) => props.customStyle}
-`;
-
 export const CustomTable = (props: Props) => {
+  const { theme } = React.useContext(ThemeContext);
+  const currentTheme = theme ? theme : null;
+
+  const StyleDiv = styled.div<Props>`
+    ${(props) => props.containerStyle}
+    ${{ marginTop: "10px", borderRadius: "8px" }}
+  `;
+
+  const StyledTable = styled(Table)<Props>`
+    ${{
+      borderRadius: "0 !important",
+      cursor: "pointer",
+      transition: "all 0.25s ease-in-out ",
+      "& .ant-table-cell": {
+        fontSize: `${currentTheme?.fontSize || 14}px`,
+        color: `${
+          currentTheme?.colorScheme?.contrastText || "black"
+        } !important`,
+      },
+
+      "&:hover": { boxShadow: "2px 2px 5px 0px #AFB6B8" },
+      "& .ant-table-container": {
+        backgroundColor: `${
+          props.tableStyle?.rowColor ||
+          currentTheme?.colorScheme?.main ||
+          "lightblue"
+        } !important`,
+      },
+
+      "& .ant-table-cell-row-hover": {
+        backgroundColor: `${
+          props.tableStyle?.hoverRowColor ||
+          currentTheme?.colorScheme?.accent ||
+          "#99CCDD"
+        } !important`,
+      },
+
+      "& .ant-table-thead .ant-table-cell": {
+        backgroundColor: `${
+          props.tableStyle?.headerColor ||
+          currentTheme?.colorScheme?.secondary ||
+          "#E0F2F1"
+        } !important`,
+      },
+
+      "& .ant-table-thead .ant-table-cell::before": {
+        backgroundColor: "black !important",
+      },
+    }}
+    ${(props) => props.customStyle}
+  `;
+
   return (
     <StyleDiv
       className={props.border === false ? "" : "border"}

@@ -1,18 +1,18 @@
 import React, { createContext, useState, ReactNode } from "react";
 
-interface Theme {
-  main?: string;
+interface ColorScheme {
   contrastText?: string;
-  dark?: string;
-  light?: string;
+  main?: string;
+  secondary?: string;
+  accent?: string;
 }
 
 interface ThemeContextType {
-  theme: Theme;
+  theme: { colorScheme?: ColorScheme; fontSize?: number };
 }
 
 interface Props {
-  theme: Theme;
+  theme: { colorScheme: ColorScheme; fontSize?: number };
   children: ReactNode;
 }
 

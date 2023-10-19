@@ -1,0 +1,41 @@
+/* * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * Color * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+$color-primary: rgba(56, 190, 26, 1); // #38be1a
+
+$color-secondary-1: rgba(35, 153, 14, 1); // #23990e
+$color-secondary-2: rgba(92, 204, 61, 1); // #5ccc3d
+$color-secondary-3: rgba(167, 230, 142, 1); // #a7e68e
+$color-secondary-4: rgba(226, 246, 221, 1); // #e2f6dd (color-mint)
+// $color-secondary-4:      rgba(245, 255, 240, 1   ); // #f5fff0
+$color-secondary-5: rgba(206, 242, 189, 1); // #cef2bd
+
+$color-info: rgba(22, 119, 255, 1); // #1677ff
+$color-success: rgba(83, 196, 26, 1); // #52c41a
+$color-warning: rgba(250, 173, 20, 1); // #faad14
+$color-error: rgba(255, 77, 79, 1); // #ff4d4f
+
+$color-white: rgba(255, 255, 255, 1); // #ffffff
+$color-timberwolf: rgba(217, 217, 217, 1); // #d9d9d9
+$color-medium-jungle-green: rgba(38, 50, 56, 1); // #263238
+$color-feldgrau: rgba(79, 91, 98, 1); // #4f5b62
+$color-manatee: rgba(156, 162, 167, 1); // #9ca2a7
+$color-isabelline: rgba(238, 238, 238, 1); // #eeeeee
+$color-pale-green: rgba(249, 253, 248, 1); // #f9fdf8
+
+$color-shadow: rgba(88, 255, 5, 0.06); // #58ff05
+$color-overlay: rgba(245, 245, 245, 0.6);
+$color-gray: rgba(245, 245, 245, 1);
+
+// _font_size
+$font-level-1: 12px;
+$font-level-2: 14px;
+$font-level-3: 16px;
+$font-level-4: 20px;
+$font-level-5: 24px;
+
+// _font_weight
+$font-weight-level-1: 400;
+$font-weight-level-2: 600;
+$font-weight-level-3: 700;

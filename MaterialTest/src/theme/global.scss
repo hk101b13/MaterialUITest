@@ -1,0 +1,318 @@
+@import "./variable.scss";
+/* Global */
+:root {
+  // font-family: roboto, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+  // background-color: #eef6ec;
+  background-color: #f0f3e8;
+  // background: #eef6ec;
+  background: #f0f3e8;
+  overflow: hidden;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+::selection {
+  background-color: $color-primary;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * General * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+::-webkit-scrollbar-track {
+  box-shadow: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(38, 50, 56, 0.3);
+}
+
+* {
+  letter-spacing: 0.5px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * Font  * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+// _font_family
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+// @font-face {
+//     font-family: 'Noto Sans TC';
+//     src: url("@/assets/fonts/Noto_Sans_TC/NotoSansTC-Black.otf") format("Noto-1"),
+//          url("@/assets/fonts/Noto_Sans_TC/NotoSansTC-Bold.otf") format("Noto-2"),
+//          url("@/assets/fonts/Noto_Sans_TC/NotoSansTC-Light.otf") format("Noto-3"),
+//          url("@/assets/fonts/Noto_Sans_TC/NotoSansTC-Medium.otf") format("Noto-4"),
+//          url("@/assets/fonts/Noto_Sans_TC/NotoSansTC-Regular.otf") format("Noto-5"),
+//          url("@/assets/fonts/Noto_Sans_TC/NotoSansTC-Thin.otf") format("Noto-6");
+// }
+
+* {
+  font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+:root {
+  color: $color-feldgrau;
+  // color: red;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * View  * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.q-non-selection {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.display-none {
+  display: none;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.pd-1 {
+  padding: 14px;
+}
+
+.width {
+  &-1 {
+    display: inline-block;
+    width: 74px;
+  }
+
+  &-2 {
+    display: inline-block;
+    width: 120px;
+  }
+
+  &-3 {
+    display: inline-block;
+    width: 180px;
+  }
+
+  &-4 {
+    display: inline-block;
+    width: 145px;
+  }
+
+  &-5 {
+    display: inline-block;
+    width: 320px;
+  }
+}
+
+.font-weight {
+  &-1 {
+    font-weight: 500;
+  }
+
+  &-2 {
+    font-weight: 700;
+  }
+}
+
+.page {
+  height: calc(100% - 80px);
+  // background-color: $color-pale-green;
+  color: $color-feldgrau !important;
+}
+
+.border {
+  border: 1px solid rgb(217, 217, 217);
+}
+
+.borderbox {
+  box-sizing: border-box;
+}
+
+.invalid-border {
+  // border: 1px dashed red;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.g-icon-collapse {
+  width: 26px;
+  height: 26px;
+  font-size: 26px;
+}
+
+.g-icon-navi {
+  max-width: 28px;
+  max-height: 28px;
+  font-size: 28px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * Padding & Margin  * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * */
+
+$padding-values: 2px;
+
+@for $i from 1 through 20 {
+  .pa-#{$i} {
+    padding: $i * $padding-values;
+  }
+
+  .px-#{$i} {
+    padding-left: $i * $padding-values;
+    padding-right: $i * $padding-values;
+  }
+
+  .py-#{$i} {
+    padding-top: $i * $padding-values;
+    padding-bottom: $i * $padding-values;
+  }
+
+  .pt-#{$i} {
+    padding-top: $i * $padding-values;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: $i * $padding-values;
+  }
+
+  .pl-#{$i} {
+    padding-left: $i * $padding-values;
+  }
+
+  .pr-#{$i} {
+    padding-right: $i * $padding-values;
+  }
+
+  .ma-#{$i} {
+    margin: $i * $padding-values;
+  }
+
+  .mx-#{$i} {
+    margin-left: $i * $padding-values;
+    margin-right: $i * $padding-values;
+  }
+
+  .my-#{$i} {
+    margin-top: $i * $padding-values;
+    margin-bottom: $i * $padding-values;
+  }
+
+  .mt-#{$i} {
+    margin-top: $i * $padding-values;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: $i * $padding-values;
+  }
+
+  .ml-#{$i} {
+    margin-left: $i * $padding-values;
+  }
+
+  .mr-#{$i} {
+    margin-right: $i * $padding-values;
+  }
+}
+
+$iconSize: 14px;
+
+.tooltip-icon {
+  background-image: url("@/assets/btn_tooltips_14x14.png");
+  background-size: $iconSize $iconSize;
+  width: $iconSize;
+  height: $iconSize;
+  margin: auto 8px;
+  background-position: 0px 0px;
+  cursor: pointer;
+}

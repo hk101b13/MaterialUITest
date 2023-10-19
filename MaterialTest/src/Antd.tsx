@@ -76,22 +76,25 @@ const data = [
 
 export const Antd = () => {
   return (
-    <>
-      <CustomTable
-        columns={columns}
-        data={data}
-        containerStyle={{
-          width: "1000px",
-          marginBottom: "20px",
-          boxShadow: "0px 0px 6px 0px #AFB6B8",
-          transition: "all 0.15s ease-in",
-          "&:hover": {
-            boxShadow: "0px 0px 10px 0px #AFB6B8",
-            cursor: "pointer",
-          },
-        }}
-        customStyle={{}}
-      />
-    </>
+    <CustomTable
+      columns={columns}
+      tableStyle={{
+        headerColor: "#FFC09F",
+        rowColor: "#FCF5C7",
+        hoverRowColor: "#FFEE93",
+      }}
+      data={data}
+      containerStyle={{
+        width: "1000px",
+        marginBottom: "20px",
+        boxShadow: "0px 0px 6px 0px #AFB6B8",
+        transition: "all 0.15s ease-in",
+        "&:hover": {
+          boxShadow: "0px 0px 10px 0px #AFB6B8",
+          cursor: "pointer",
+        },
+      }}
+      customStyle={{}}
+    />
   );
 };

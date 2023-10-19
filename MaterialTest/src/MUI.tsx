@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button as MButton } from "@mui/material";
+import React from "react";
 
 function createData(
   name: string,
@@ -30,84 +31,80 @@ const rows = [
 // light: A lighter shade of main
 // dark: A darker shade of main
 // contrastText: Text color, intended to contrast with main
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#38BE1A",
-      contrastText: "white",
-      dark: "#4BE229",
-    },
-    secondary: {
-      main: "#FEA730",
-      contrastText: "white",
-      dark: "#FBBE46",
-    },
-  },
-});
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#38BE1A",
+//       contrastText: "white",
+//       dark: "#4BE229",
+//     },
+//     secondary: {
+//       main: "#FEA730",
+//       contrastText: "white",
+//       dark: "#FBBE46",
+//     },
+//   },
+// });
 
 export const MUI = () => {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <MButton
-          sx={{
-            margin: "10px",
-            backgroundColor: "lightBlue",
-            color: "white",
-            "&:hover": {
-              backgroundColor: "pink",
-            },
-          }}
-        >
-          MUI Button
-        </MButton>
-        <MButton
-          color="primary"
-          variant="contained"
-          sx={{ marginRight: "10px" }}
-        >
-          MUI Button
-        </MButton>
-        <MButton color="secondary" variant="outlined">
-          MUI Button
-        </MButton>
+      {/* <ThemeProvider theme={theme}> */}
+      <MButton
+        sx={{
+          margin: "10px",
+          backgroundColor: "lightBlue",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "pink",
+          },
+        }}
+      >
+        MUI Button
+      </MButton>
+      <MButton color="primary" variant="contained" sx={{ marginRight: "10px" }}>
+        MUI Button
+      </MButton>
+      <MButton color="secondary" variant="outlined">
+        MUI Button
+      </MButton>
 
-        <TableContainer
-          component={Paper}
-          sx={{ backgroundColor: "lightGray", maxWidth: "1000px" }}
-        >
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Dessert (100g serving)</TableCell>
-                <TableCell align="right">Calories</TableCell>
-                <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                <TableCell align="right">Protein&nbsp;(g)</TableCell>
+      <TableContainer
+        component={Paper}
+        sx={{ backgroundColor: "lightGray", maxWidth: "1000px" }}
+      >
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Dessert (100g serving)</TableCell>
+              <TableCell align="right">Calories</TableCell>
+              <TableCell align="right">Fat&nbsp;(g)</TableCell>
+              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.name}
+                sx={{
+                  background: "white",
+                  "&:last-child td, &:last-child th": { border: 0 },
+                }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="right">{row.calories}</TableCell>
+                <TableCell align="right">{row.fat}</TableCell>
+                <TableCell align="right">{row.carbs}</TableCell>
+                <TableCell align="right">{row.protein}</TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{
-                    background: "white",
-                    "&:last-child td, &:last-child th": { border: 0 },
-                  }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.protein}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </ThemeProvider>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* </ThemeProvider> */}
     </>
   );
 };
