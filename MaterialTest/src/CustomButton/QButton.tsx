@@ -2,7 +2,7 @@ import { Button } from "antd";
 import React, { ReactNode } from "react";
 import "./style.scss";
 
-interface QButtonProps {
+export interface QButtonProps {
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
   icon?: ReactNode;
 

@@ -4,6 +4,7 @@ import { Antd } from "./Antd";
 import { MUI } from "./MUI";
 import { Bootstrap } from "./Bootstrap";
 import { ThemeCustomProvider } from "./ThemeCustomeProvider";
+import CustomizedSnackbars from "./CustomSnackBar";
 
 import "./style.scss";
 
@@ -24,10 +25,8 @@ function App() {
         <div style={{ marginBottom: "50px" }}>
           <h1>Custom Component</h1>
           <CustomButton
-            isLoading={true}
-            customStyle={{
-              backgroundColor: "pink",
-              "&:hover": { color: "white !important" },
+            onClick={() => {
+              console.log("AAAA");
             }}
           >
             Click
@@ -41,6 +40,8 @@ function App() {
 
         <div style={{ marginBottom: "50px" }}>
           <h1>Material UI Component</h1>
+          <CustomizedSnackbars type="error" />
+          <br />
           <MUI />
         </div>
 

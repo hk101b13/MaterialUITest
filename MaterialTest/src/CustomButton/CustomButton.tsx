@@ -1,54 +1,68 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { Interpolation, Theme } from "@emotion/react";
 import { ThemeContext } from "../ThemeCustomeProvider";
-import QButton from "./QButton";
+import { Button } from "antd";
+import { ButtonProps } from "antd";
 
 import "./style.scss";
 
 interface CustomButtonProps {
-  children: React.ReactNode;
   customStyle?: Interpolation<Theme>;
-  onClick?: () => void;
-  isLoading?: boolean;
+
+  onClick?: React.MouseEventHandler<HTMLElement> | undefined;
+  icon?: ReactNode;
+
+  type?: "info" | "success" | "warning" | "error";
+
+  disabled?: boolean;
+  loading?: boolean;
+  children?: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-const CustomButton = (props: CustomButtonProps) => {
-  const { customStyle } = props;
+const CustomButton = (props: CustomButtonProps & ButtonProps) => {
+  const { children, customStyle } = props;
   const { theme } = React.useContext(ThemeContext);
-  const currentTheme = theme ? theme : null;
+  const currentTheme = theme || null;
+  const { colorScheme, fontSize } = currentTheme;
 
-  const MButton = styled(QButton)<CustomButtonProps>`
+  const MButton = styled(Button)<CustomButtonProps>`
     ${{
+      width: "auto",
       borderRadius: "8px",
       border: "none",
       cursor: "pointer",
       boxShadow: "2px 2px 5px 0px #AFB6B8",
       transition: "all 0.25s ease-in-out ",
       marginLeft: "10px",
-      backgroundColor: `${
-        currentTheme?.colorScheme?.main || "lightblue"
-      } !important`,
-      fontSize: `${currentTheme?.fontSize || 14}px`,
-      color: `${currentTheme?.colorScheme?.contrastText || "black"} !important`,
+      backgroundColor: `${colorScheme?.main || "lightblue"}`,
+      fontSize: `${fontSize || 14}px`,
+      color: `${colorScheme?.contrastText || "black"}`,
       "&:hover": {
-        backgroundColor: `${
-          currentTheme?.colorScheme?.accent || "pink"
-        } !important`,
+        color: "white !important",
+        backgroundColor: `${colorScheme?.accent || "pink"}`,
       },
       "& .ant-wave": {
-        "--wave-color": `${
-          currentTheme?.colorScheme?.accent || "lightgray"
-        } !important`,
+        "--wave-color": `${colorScheme?.accent || "lightgray"} !important`,
       },
     }}
-    ${(props) => props.customStyle}
   `;
 
   return (
-    <MButton customStyle={props.customStyle} onClick={props.onClick}>
-      {props.children}
-    </MButton>
+    <div>
+      <MButton
+        className={props.className}
+        onClick={props.onClick}
+        icon={props.icon}
+        disabled={props.disabled}
+        loading={props.loading}
+        style={props.style}
+      >
+        {children}
+      </MButton>
+    </div>
   );
 };
 

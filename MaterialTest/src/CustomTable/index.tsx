@@ -24,8 +24,6 @@ interface Props {
   loading?: boolean;
   customStyle?: Interpolation<Theme>;
   containerStyle?: Interpolation<Theme>;
-  // rowColor?: string;
-  // headerColor?: string;
   tableStyle?: {
     headerColor?: string;
     rowColor?: string;
@@ -46,6 +44,7 @@ export const CustomTable = (props: Props) => {
     ${{
       borderRadius: "0 !important",
       cursor: "pointer",
+      color: "white !important",
       transition: "all 0.25s ease-in-out ",
       "& .ant-table-cell": {
         fontSize: `${currentTheme?.fontSize || 14}px`,
