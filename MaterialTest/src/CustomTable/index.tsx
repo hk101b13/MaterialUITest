@@ -1,29 +1,14 @@
-import { Table } from "antd";
+import { Table, TableProps } from "antd";
 import { ColumnsType } from "antd/lib/table";
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import styled, { Interpolation } from "@emotion/styled";
 import { Theme } from "@emotion/react";
-import { ThemeContext } from "../ThemeCustomeProvider";
-import React from "react";
+import { ThemeContext } from "../CustomeThemeProvider";
+import { useContext } from "react";
+import { AddImportantToStyles } from "../CustomeThemeProvider";
 
-interface Props {
-  autoScroll?: boolean;
-  className?: string;
-  columns?: ColumnsType<any> & ColumnsType;
-  data?: any;
-  maxHeight?: number;
-  rowSelection?: any;
-  style?: CSSProperties;
-  rowClassName?: string | undefined;
-  onRow?: any;
-  rowHeight?: number;
-  offset?: number;
-  pageSize?: number;
-  border?: boolean;
-  locale?: object;
-  loading?: boolean;
+interface CustomTableProps {
   customStyle?: Interpolation<Theme>;
-  containerStyle?: Interpolation<Theme>;
   tableStyle?: {
     headerColor?: string;
     rowColor?: string;
@@ -31,77 +16,57 @@ interface Props {
   };
 }
 
-export const CustomTable = (props: Props) => {
-  const { theme } = React.useContext(ThemeContext);
-  const currentTheme = theme ? theme : null;
+const StyledTable = styled(Table)(
+  (props: CustomTableProps & TableProps<any>) => {
+    const { colorScheme, fontSize, fontFamily } = useContext(ThemeContext);
 
-  const StyleDiv = styled.div<Props>`
-    ${(props) => props.containerStyle}
-    ${{ marginTop: "10px", borderRadius: "8px" }}
-  `;
-
-  const StyledTable = styled(Table)<Props>`
-    ${{
-      borderRadius: "0 !important",
+    const baseStyle = {
       cursor: "pointer",
-      color: "white !important",
+      color: "white",
       transition: "all 0.25s ease-in-out ",
+      boxShadow: "2px 2px 5px 0px #AFB6B8",
+      borderRadius: "8px",
       "& .ant-table-cell": {
-        fontSize: `${currentTheme?.fontSize || 14}px`,
-        color: `${
-          currentTheme?.colorScheme?.contrastText || "black"
-        } !important`,
+        fontFamily: fontFamily || "",
+        fontSize: `${fontSize?.h2 || 14}px`,
+        color: `${colorScheme?.text || "black"}`,
       },
-
-      "&:hover": { boxShadow: "2px 2px 5px 0px #AFB6B8" },
       "& .ant-table-container": {
         backgroundColor: `${
-          props.tableStyle?.rowColor ||
-          currentTheme?.colorScheme?.main ||
-          "lightblue"
-        } !important`,
+          props.tableStyle?.rowColor || colorScheme?.main || "lightblue"
+        }`,
       },
-
       "& .ant-table-cell-row-hover": {
         backgroundColor: `${
-          props.tableStyle?.hoverRowColor ||
-          currentTheme?.colorScheme?.accent ||
-          "#99CCDD"
+          props.tableStyle?.hoverRowColor || colorScheme?.accent || "#99CCDD"
         } !important`,
       },
-
       "& .ant-table-thead .ant-table-cell": {
         backgroundColor: `${
-          props.tableStyle?.headerColor ||
-          currentTheme?.colorScheme?.secondary ||
-          "#E0F2F1"
-        } !important`,
+          props.tableStyle?.headerColor || colorScheme?.secondary || "#E0F2F1"
+        }`,
       },
-
       "& .ant-table-thead .ant-table-cell::before": {
-        backgroundColor: "black !important",
+        backgroundColor: "black",
       },
-    }}
-    ${(props) => props.customStyle}
-  `;
+      "&&.ant-spin &&.ant-spin-dot-item": { color: "red" },
+    };
 
+    const importantCustomStyle = AddImportantToStyles(props.customStyle);
+    return [baseStyle, importantCustomStyle];
+  }
+);
+
+export const CustomTable = (props: CustomTableProps & TableProps<any>) => {
   return (
-    <StyleDiv
-      className={props.border === false ? "" : "border"}
-      containerStyle={props.containerStyle}
-    >
-      <StyledTable
-        columns={props.columns}
-        className={props.className}
-        loading={props.loading}
-        pagination={false}
-        scroll={{ y: "100%" }}
-        dataSource={props.data}
-        rowSelection={props.rowSelection}
-        onRow={props.onRow}
-        locale={props.locale}
-        customStyle={props.customStyle}
-      />
-    </StyleDiv>
+    <>
+      <div style={{ width: "1000px" }}>
+        <StyledTable
+          tableStyle={props.tableStyle}
+          pagination={false}
+          {...props}
+        />
+      </div>
+    </>
   );
 };

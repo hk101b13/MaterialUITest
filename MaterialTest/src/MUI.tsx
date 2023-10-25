@@ -7,7 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button as MButton } from "@mui/material";
-import React from "react";
 
 function createData(
   name: string,
@@ -27,29 +26,9 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 
-// main: The main shade of the color
-// light: A lighter shade of main
-// dark: A darker shade of main
-// contrastText: Text color, intended to contrast with main
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: "#38BE1A",
-//       contrastText: "white",
-//       dark: "#4BE229",
-//     },
-//     secondary: {
-//       main: "#FEA730",
-//       contrastText: "white",
-//       dark: "#FBBE46",
-//     },
-//   },
-// });
-
 export const MUI = () => {
   return (
     <>
-      {/* <ThemeProvider theme={theme}> */}
       <MButton
         sx={{
           margin: "10px",

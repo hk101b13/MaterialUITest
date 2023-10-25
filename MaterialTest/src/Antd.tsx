@@ -1,40 +1,7 @@
 import { ColumnsType } from "antd/es/table";
 import { RightOutlined } from "@ant-design/icons";
 import { CustomTable } from "./CustomTable";
-
-const columns: ColumnsType = [
-  {
-    title: "Username",
-    dataIndex: "username",
-    key: "username",
-    width: "20%",
-    ellipsis: true,
-    onCell: (record: any, index) => ({}),
-  },
-  {
-    title: "Email",
-    dataIndex: "email",
-    key: "email",
-    width: "25%",
-    ellipsis: true,
-    onCell: (record: any, index) => ({}),
-  },
-  {
-    title: "Description",
-    dataIndex: "description",
-    key: "description",
-    width: "50%",
-    ellipsis: true,
-    onCell: (record: any, index) => ({}),
-  },
-  {
-    dataIndex: "arrow",
-    key: "arrow",
-    align: "center",
-    width: "5%",
-    onCell: (record: any, index) => ({}),
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const data = [
   {
@@ -75,6 +42,41 @@ const data = [
 ];
 
 export const Antd = () => {
+  const { t } = useTranslation();
+
+  const columns: ColumnsType = [
+    {
+      title: t("Username"),
+      dataIndex: "username",
+      key: "username",
+      width: "20%",
+      ellipsis: true,
+      onCell: (record: any, index) => ({}),
+    },
+    {
+      title: t("Email"),
+      dataIndex: "email",
+      key: "email",
+      width: "25%",
+      ellipsis: true,
+      onCell: (record: any, index) => ({}),
+    },
+    {
+      title: t("Description"),
+      dataIndex: "description",
+      key: "description",
+      width: "50%",
+      ellipsis: true,
+      onCell: (record: any, index) => ({}),
+    },
+    {
+      dataIndex: "arrow",
+      key: "arrow",
+      align: "center",
+      width: "5%",
+      onCell: (record: any, index) => ({}),
+    },
+  ];
   return (
     <CustomTable
       columns={columns}
@@ -83,18 +85,8 @@ export const Antd = () => {
         rowColor: "#FCF5C7",
         hoverRowColor: "#FFEE93",
       }}
-      data={data}
-      containerStyle={{
-        width: "1000px",
-        marginBottom: "20px",
-        boxShadow: "0px 0px 6px 0px #AFB6B8",
-        transition: "all 0.15s ease-in",
-        "&:hover": {
-          boxShadow: "0px 0px 10px 0px #AFB6B8",
-          cursor: "pointer",
-        },
-      }}
-      customStyle={{}}
+      dataSource={data}
+      scroll={{ y: "250px" }}
     />
   );
 };

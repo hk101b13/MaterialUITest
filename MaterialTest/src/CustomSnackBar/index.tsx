@@ -1,13 +1,13 @@
-import * as React from "react";
+import { useContext, forwardRef } from "react";
 import Stack from "@mui/material/Stack";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import styled, { Interpolation } from "@emotion/styled";
-import { ThemeContext } from "../ThemeCustomeProvider";
+import { ThemeContext } from "../CustomeThemeProvider";
 import CustomButton from "../CustomButton/CustomButton";
 import { useState } from "react";
 import { Snackbar } from "@mui/material";
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
   ref
 ) {
@@ -20,25 +20,21 @@ interface Props {
 
 export default function CustomizedSnackbars(props: Props) {
   const { type } = props;
-  const { theme } = React.useContext(ThemeContext);
-  const currentTheme = theme ? theme : null;
+  const { colorScheme } = useContext(ThemeContext);
 
   const StyledAlert = styled(Alert)<Props>`
     ${(props) => ({
       backgroundColor:
         props.type === "error"
-          ? currentTheme?.colorScheme?.contrastText || "pink"
+          ? colorScheme?.text || "pink"
           : props.type === "warning"
-          ? currentTheme?.colorScheme?.accent || "lightyellow"
+          ? colorScheme?.accent || "lightyellow"
           : props.type === "info"
-          ? currentTheme?.colorScheme?.secondary || "lightblue"
+          ? colorScheme?.secondary || "lightblue"
           : props.type === "success"
-          ? currentTheme?.colorScheme?.main || "lightgreen"
+          ? colorScheme?.main || "lightgreen"
           : "",
-      color:
-        props.type === "success"
-          ? currentTheme?.colorScheme?.contrastText || "black"
-          : "white",
+      color: props.type === "success" ? colorScheme?.text || "black" : "white",
     })}
   `;
 

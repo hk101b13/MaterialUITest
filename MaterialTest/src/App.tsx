@@ -1,35 +1,67 @@
 import CustomButton from "./CustomButton/CustomButton";
-import { CustomTable } from "./CustomTable";
 import { Antd } from "./Antd";
 import { MUI } from "./MUI";
 import { Bootstrap } from "./Bootstrap";
-import { ThemeCustomProvider } from "./ThemeCustomeProvider";
+import { ThemeCustomProvider } from "./CustomeThemeProvider";
 import CustomizedSnackbars from "./CustomSnackBar";
+import { useTranslation } from "react-i18next";
+import CustomSwitch from "./CustomSwitch";
 
 import "./style.scss";
+import { useState } from "react";
 
 function App() {
+  const { t } = useTranslation();
+  const [lang, setLang] = useState("en");
+  const [loading, setLoading] = useState(true);
+
   return (
     <div style={{ padding: "10px", backgroundColor: "#F3FFE1" }}>
       <ThemeCustomProvider
-        theme={{
-          colorScheme: {
-            main: "#EFCFE3",
-            secondary: "#EA9AB2",
-            accent: "#E27396",
-            contrastText: "#320E3B",
-          },
-          fontSize: 18,
+        colorScheme={{
+          main: "#EFCFE3",
+          secondary: "#EA9AB2",
+          accent: "#E27396",
+          text: "#320E3B",
         }}
+        fontSize={{ h1: 22, h2: 18, h3: 16 }}
+        lang={"zh-TW"}
+        fontFamily={"'Roboto Mono', monospace, 'Noto Serif TC', serif"}
+      >
+        <div style={{ display: "flex" }}>
+          <p style={{ marginRight: "10px" }}>English</p>
+          <CustomSwitch
+            onChange={(e) => {
+              setLang(e ? "zh-TW" : "en");
+            }}
+          />
+          <p style={{ marginLeft: "10px" }}>繁體中文</p>
+        </div>
+        <br />
+      </ThemeCustomProvider>
+
+      <ThemeCustomProvider
+        colorScheme={{
+          main: "#EFCFE3",
+          secondary: "#EA9AB2",
+          accent: "#E27396",
+          text: "#320E3B",
+        }}
+        fontSize={{ h1: 22, h2: 18, h3: 16 }}
+        lang={lang}
+        fontFamily={"'Roboto Mono', monospace, 'Noto Serif TC', serif"}
       >
         <div style={{ marginBottom: "50px" }}>
           <h1>Custom Component</h1>
           <CustomButton
+            customStyle={{
+              color: "red !important",
+            }}
             onClick={() => {
               console.log("AAAA");
             }}
           >
-            Click
+            {t("Click")}
           </CustomButton>
         </div>
 
