@@ -7,18 +7,25 @@ import { Button, ButtonProps } from "antd";
 
 interface CustomButtonProps {
   customStyle?: Interpolation<Theme>;
-  children?: ReactNode;
-  onClick: () => void;
 }
 
 const MButton = styled(Button)<CustomButtonProps & ButtonProps>(
   (props: CustomButtonProps & ButtonProps) => {
-    const { colorScheme, fontSize, fontFamily } = useContext(ThemeContext);
+    const { colorScheme, fontSize, fontFamily, size } =
+      useContext(ThemeContext);
 
     const baseStyles = {
       width: "auto",
       height: "auto",
-      padding: "10px 20px",
+      padding:
+        size === "large"
+          ? "20px 40px"
+          : size === "middle"
+          ? "10px 15px"
+          : size === "small"
+          ? "5px 10px"
+          : "10px 20px",
+
       borderRadius: "8px",
       border: "none",
       cursor: "pointer",
@@ -44,17 +51,10 @@ const MButton = styled(Button)<CustomButtonProps & ButtonProps>(
   }
 );
 
-const CustomButton = (
-  customButtonProps: CustomButtonProps,
-  props: ButtonProps
-) => {
-  const { children } = customButtonProps;
-
+const CustomButton = (props: CustomButtonProps & ButtonProps) => {
   return (
     <div>
-      <MButton {...props} onClick={customButtonProps.onClick}>
-        {children}
-      </MButton>
+      <MButton {...props}>{props.children}</MButton>
     </div>
   );
 };

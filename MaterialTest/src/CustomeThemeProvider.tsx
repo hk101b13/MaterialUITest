@@ -1,17 +1,10 @@
-import React, {
-  createContext,
-  useState,
-  ReactNode,
-  useEffect,
-  useMemo,
-} from "react";
-import i18n from "./i18n";
+import React, { createContext, ReactNode, useContext, useState } from "react";
+import { TFunction } from "i18next";
 import { Interpolation, Theme } from "@emotion/react";
-import i18next from "i18next";
-import { initReactI18next } from "react-i18next";
-import en from "./assets/i18n/en.json";
-import tw from "./assets/i18n/zh-TW.json";
-import { useTranslation } from "react-i18next";
+import ENG from "./assets/i18n/ENG.json";
+import CHT from "./assets/i18n/CHT.json";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
 
 interface ThemeContextType {
   colorScheme?: {
@@ -22,11 +15,9 @@ interface ThemeContextType {
   };
   fontSize?: { h1: number; h2: number; h3: number };
   size?: "small" | "middle" | "large";
-  lang?: string;
+  locale?: string;
   fontFamily?: string;
-  // zIndex?: number;
-  // level?: "error" | "warning" | "normal";
-  // loading?: boolean;
+  t?: TFunction;
 }
 
 interface Props {
@@ -38,8 +29,8 @@ interface Props {
   };
   fontSize?: { h1: number; h2: number; h3: number };
   size?: "small" | "middle" | "large";
-  lang?: string;
-  children: ReactNode;
+  locale?: string;
+  children: any;
   fontFamily?: string;
 }
 
@@ -67,28 +58,77 @@ export const AddImportantToStyles = (
 
 export const ThemeContext = createContext<ThemeContextType>({});
 
+const resources = {
+  ENG: {
+    translation: ENG,
+  },
+  CHT: {
+    translation: CHT,
+  },
+};
+
+// const myI18n = i18next.createInstance();
+
+// myI18n.use(initReactI18next).init({
+//   resources,
+//   lng: "ENG",
+//   fallbackLng: "ENG",
+//   interpolation: {
+//     escapeValue: false,
+//   },
+// });
+
+// interface I18nContextType {
+//   t: TFunction<any> | undefined;
+// }
+
+// const I18nContext = createContext<I18nContextType>({ t: myI18n.t });
+
+// const CustomI18nProvider = (props: {
+//   locale?: string;
+//   children?: ReactNode;
+// }) => {
+//   const newI18n = myI18n.cloneInstance();
+//   newI18n.init({
+//     lng: props.locale,
+//   });
+
+//   return (
+//     <I18nContext.Provider value={{ t: newI18n.t }}>
+//       {props.children}
+//     </I18nContext.Provider>
+//   );
+// };
+
+// export const useI18Context = () => {
+//   return useContext(I18nContext);
+// };
+
 export const ThemeCustomProvider: React.FC<Props> = (props: Props) => {
-  // const Language = i18next.createInstance();
-
-  // Language.changeLanguage("zh-TW");
-
-  useEffect(() => {
-    if (props.lang) {
-      i18n.changeLanguage(props.lang);
-    }
-  }, [props.lang]);
-
   const contextValue: ThemeContextType = {
     colorScheme: props.colorScheme,
-    lang: props.lang,
+    locale: props.locale,
     size: props.size,
     fontSize: props.fontSize,
     fontFamily: props.fontFamily,
   };
 
+  const { children } = props;
+  const newI18n = i18n.cloneInstance();
+
+  newI18n.init({
+    lng: props.locale,
+  });
+
   return (
-    <ThemeContext.Provider value={contextValue}>
-      {props.children}
-    </ThemeContext.Provider>
+    <div>
+      <I18nextProvider i18n={newI18n}>
+        <ThemeContext.Provider value={contextValue}>
+          {/* <CustomI18nProvider locale={props.locale}> */}
+          {children}
+          {/* </CustomI18nProvider> */}
+        </ThemeContext.Provider>
+      </I18nextProvider>
+    </div>
   );
 };

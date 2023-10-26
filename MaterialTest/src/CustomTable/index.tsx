@@ -1,6 +1,4 @@
 import { Table, TableProps } from "antd";
-import { ColumnsType } from "antd/lib/table";
-import { CSSProperties, useEffect, useState } from "react";
 import styled, { Interpolation } from "@emotion/styled";
 import { Theme } from "@emotion/react";
 import { ThemeContext } from "../CustomeThemeProvider";

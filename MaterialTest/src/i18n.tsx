@@ -1,22 +1,22 @@
 // src/i18n.js
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import en from "./assets/i18n/en.json";
-import tw from "./assets/i18n/zh-TW.json";
+import ENG from "./assets/i18n/ENG.json";
+import CHT from "./assets/i18n/CHT.json";
 
 const resources = {
-  en: {
-    translation: en,
+  ENG: {
+    translation: ENG,
   },
-  "zh-TW": {
-    translation: tw,
+  CHT: {
+    translation: CHT,
   },
 };
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "en", //預設語言
-  fallbackLng: "en", //如果當前切換的語言沒有對應的翻譯則使用這個語言，
+  lng: "ENG",
+  fallbackLng: "ENG",
   interpolation: {
     escapeValue: false,
   },
