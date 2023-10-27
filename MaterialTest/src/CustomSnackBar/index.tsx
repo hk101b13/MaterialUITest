@@ -2,10 +2,11 @@ import { useContext, forwardRef } from "react";
 import Stack from "@mui/material/Stack";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import styled, { Interpolation } from "@emotion/styled";
-import { ThemeContext } from "../CustomeThemeProvider";
+import { ThemeContext } from "../ThemeCustomProvider";
 import CustomButton from "../CustomButton/CustomButton";
 import { useState } from "react";
 import { Snackbar } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -21,6 +22,7 @@ interface Props {
 export default function CustomizedSnackbars(props: Props) {
   const { type } = props;
   const { colorScheme } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   const StyledAlert = styled(Alert)<Props>`
     ${(props) => ({
@@ -57,24 +59,24 @@ export default function CustomizedSnackbars(props: Props) {
 
   return (
     <Stack spacing={2} sx={{ width: "50%" }}>
-      <CustomButton onClick={handleClick}>Open snackbar</CustomButton>
+      <CustomButton onClick={handleClick}>{t("Open_snackbar")}</CustomButton>
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <StyledAlert onClose={handleClose} type="success">
-          This is a success message!
+          {t("Success_message")}
         </StyledAlert>
       </Snackbar>
 
       <StyledAlert type="error" severity={type}>
-        This is an error message!
+        {t("Error_message")}
       </StyledAlert>
       <StyledAlert type="warning" severity={type}>
-        This is a warning message!
+        {t("Warning_message")}
       </StyledAlert>
       <StyledAlert type="info" severity={type}>
-        This is an information message!
+        {t("Info_message")}
       </StyledAlert>
       <StyledAlert type="success" severity={type}>
-        This is a success message!
+        {t("Success_message")}
       </StyledAlert>
     </Stack>
   );

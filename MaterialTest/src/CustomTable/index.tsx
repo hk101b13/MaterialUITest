@@ -1,9 +1,9 @@
 import { Table, TableProps } from "antd";
 import styled, { Interpolation } from "@emotion/styled";
 import { Theme } from "@emotion/react";
-import { ThemeContext } from "../CustomeThemeProvider";
+import { ThemeContext } from "../ThemeCustomProvider";
 import { useContext } from "react";
-import { AddImportantToStyles } from "../CustomeThemeProvider";
+import { AddImportantToStyles } from "../ThemeCustomProvider";
 
 interface CustomTableProps {
   customStyle?: Interpolation<Theme>;
@@ -19,14 +19,12 @@ const StyledTable = styled(Table)(
     const { colorScheme, fontSize, fontFamily } = useContext(ThemeContext);
 
     const baseStyle = {
-      cursor: "pointer",
       color: "white",
       transition: "all 0.25s ease-in-out ",
       boxShadow: "2px 2px 5px 0px #AFB6B8",
       borderRadius: "8px",
       "& .ant-table-cell": {
         fontFamily: fontFamily || "",
-        fontSize: `${fontSize?.h2 || 14}px`,
         color: `${colorScheme?.text || "black"}`,
       },
       "& .ant-table-container": {
@@ -48,6 +46,8 @@ const StyledTable = styled(Table)(
         backgroundColor: "black",
       },
       "&&.ant-spin &&.ant-spin-dot-item": { color: "red" },
+      "& th": { fontSize: `${fontSize?.t3 || 18}px !important` },
+      "& td": { fontSize: `${fontSize?.t4 || 18}px !important` },
     };
 
     const importantCustomStyle = AddImportantToStyles(props.customStyle);

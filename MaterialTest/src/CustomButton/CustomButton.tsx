@@ -1,8 +1,8 @@
 import React, { ReactNode, useContext } from "react";
 import styled from "@emotion/styled";
-import { AddImportantToStyles } from "../CustomeThemeProvider";
+import { AddImportantToStyles } from "../ThemeCustomProvider";
 import { Interpolation, Theme } from "@emotion/react";
-import { ThemeContext } from "../CustomeThemeProvider";
+import { ThemeContext } from "../ThemeCustomProvider";
 import { Button, ButtonProps } from "antd";
 
 interface CustomButtonProps {
@@ -33,7 +33,7 @@ const MButton = styled(Button)<CustomButtonProps & ButtonProps>(
       transition: "all 0.25s ease-in-out",
       marginLeft: "10px",
       backgroundColor: `${colorScheme?.main || "lightblue"}`,
-      fontSize: `${fontSize?.h2 || 14}px`,
+      fontSize: `${fontSize?.t3 || 14}px`,
       color: `${colorScheme?.text || "black"}`,
       fontFamily: fontFamily,
       "&:not(.ant-btn-loading):hover": {

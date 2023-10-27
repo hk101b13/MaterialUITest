@@ -3,9 +3,9 @@ import { ColumnsType } from "antd/lib/table";
 import { CSSProperties, ReactNode, useEffect, useState } from "react";
 import styled, { Interpolation } from "@emotion/styled";
 import { Theme } from "@emotion/react";
-import { ThemeContext } from "../CustomeThemeProvider";
+import { ThemeContext } from "../ThemeCustomProvider";
 import { useContext } from "react";
-import { AddImportantToStyles } from "../CustomeThemeProvider";
+import { AddImportantToStyles } from "../ThemeCustomProvider";
 import { Spin } from "antd";
 import { SpinProps } from "antd";
 

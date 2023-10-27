@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button as MButton } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { ThemeCustomProvider } from "./CustomeThemeProvider";
+import { ThemeCustomProvider } from "./ThemeCustomProvider";
 
 function createData(
   name: string,
@@ -31,17 +31,7 @@ const rows = [
 export const MUI = () => {
   const { t } = useTranslation();
   return (
-    <ThemeCustomProvider
-      colorScheme={{
-        main: "#EFCFE3",
-        secondary: "#EA9AB2",
-        accent: "#E27396",
-        text: "#320E3B",
-      }}
-      fontSize={{ h1: 22, h2: 18, h3: 16 }}
-      locale={"ENG"}
-      fontFamily={"'Roboto Mono', monospace, 'Noto Serif TC', serif"}
-    >
+    <>
       <MButton
         sx={{
           margin: "10px",
@@ -70,9 +60,9 @@ export const MUI = () => {
             <TableRow>
               <TableCell>Dessert (100g serving)</TableCell>
               <TableCell align="right">{t("Calories")}</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+              <TableCell align="right">{t("Fat(g)")}</TableCell>
+              <TableCell align="right">{t("Carbs(g)")}</TableCell>
+              <TableCell align="right">{t("Protein(g)")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -96,6 +86,6 @@ export const MUI = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </ThemeCustomProvider>
+    </>
   );
 };
