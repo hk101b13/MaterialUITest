@@ -1,10 +1,10 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext } from "react";
 import i18next, { TFunction } from "i18next";
 import { Interpolation, Theme } from "@emotion/react";
 import ENG from "./assets/i18n/ENG.json";
 import CHT from "./assets/i18n/CHT.json";
 import { I18nextProvider, initReactI18next } from "react-i18next";
-import i18n from "../i18n";
+// import i18n from "../i18n";
 
 interface ThemeContextType {
   colorScheme?: {
@@ -81,30 +81,30 @@ export const ThemeCustomProvider = (props: Props) => {
     fontFamily: props.fontFamily,
   };
 
-  const { children } = props;
+  const { children, localeBundle, locale } = props;
 
-  // const i18n = i18next.createInstance();
+  const newI18n = i18next.createInstance();
 
-  // i18n.use(initReactI18next).init({
-  //   resources: {},
-  //   lng: "ENG",
-  //   fallbackLng: "ENG",
-  //   interpolation: {
-  //     escapeValue: false,
-  //   },
+  const resources = {};
+
+  if (localeBundle && localeBundle.length > 0) {
+    localeBundle.forEach((item) => {
+      resources[item.lng] = { [item.ns]: item.resources };
+    });
+  }
+
+  newI18n.init({
+    resources,
+    lng: locale,
+    fallbackLng: locale,
+    interpolation: {
+      escapeValue: false,
+    },
+  });
+
+  // localeBundle?.forEach((item) => {
+  //   newI18n.addResourceBundle(item.lng, item.ns, item.resources, false, false);
   // });
-
-  const newI18n = i18n.cloneInstance({
-    forkResourceStore: true,
-    resources: {},
-    lng: props.locale,
-  });
-
-  props.localeBundle?.forEach((item) => {
-    newI18n.addResourceBundle(item.lng, item.ns, item.resources, false, false);
-  });
-
-  console.log(i18n.getResourceBundle("CHT", "translation"));
 
   return (
     <div>

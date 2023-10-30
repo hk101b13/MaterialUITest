@@ -8,7 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button as MButton } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { ThemeCustomProvider } from "./ThemeCustomProvider";
 
 function createData(
   name: string,
@@ -42,13 +41,13 @@ export const MUI = () => {
           },
         }}
       >
-        MUI Button
+        {t("Click")}
       </MButton>
       <MButton color="primary" variant="contained" sx={{ marginRight: "10px" }}>
-        MUI Button
+        {t("Click")}
       </MButton>
       <MButton color="secondary" variant="outlined">
-        MUI Button
+        {t("Click")}
       </MButton>
 
       <TableContainer

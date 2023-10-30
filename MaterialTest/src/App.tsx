@@ -10,51 +10,14 @@ import { RightOutlined } from "@ant-design/icons";
 import { CustomText } from "./CustomText";
 import ENG from "./ThemeCustomProvider/assets/i18n/ENG.json";
 import CHT from "./ThemeCustomProvider/assets/i18n/CHT.json";
+import ENG_1 from "./ENG.json";
+import CHT_1 from "./CHT.json";
 
 import "./style.scss";
 import { useContext, useState } from "react";
 
-const data = [
-  {
-    key: "0",
-    username: "User_1",
-    email: "user_1@gmail.com",
-    description: "This is User 1.",
-    arrow: <RightOutlined style={{ fontSize: "12px" }} />,
-  },
-  {
-    key: "1",
-    username: "User_2",
-    email: "user_2@gmail.com",
-    description: "This is User 2.",
-    arrow: <RightOutlined style={{ fontSize: "12px" }} />,
-  },
-  {
-    key: "2",
-    username: "User_3",
-    email: "user_3@gmail.com",
-    description: "This is User 3.",
-    arrow: <RightOutlined style={{ fontSize: "12px" }} />,
-  },
-  {
-    key: "3",
-    username: "User_4",
-    email: "user_4@gmail.com",
-    description: "This is User 4.",
-    arrow: <RightOutlined style={{ fontSize: "12px" }} />,
-  },
-  {
-    key: "4",
-    username: "User_5",
-    email: "user_5@gmail.com",
-    description: "This is User 5.",
-    arrow: <RightOutlined style={{ fontSize: "12px" }} />,
-  },
-];
-
 function App() {
   const { t, i18n } = useTranslation();
-  // const [lang, setLang] = useState("ENG");
   const [lang_1, setLang_1] = useState("ENG");
   const [lang_2, setLang_2] = useState("ENG");
 
@@ -140,6 +103,10 @@ function App() {
           fontSize={{ t1: 40, t2: 30, t3: 22, t4: 18, t5: 16 }}
           fontFamily={"'Roboto Mono', monospace, 'Noto Serif TC', serif"}
           locale={lang_2}
+          localeBundle={[
+            { lng: "ENG", ns: "translation", resources: ENG_1 },
+            { lng: "CHT", ns: "translation", resources: CHT_1 },
+          ]}
         >
           <div style={{ display: "flex" }}>
             <p style={{ marginRight: "10px" }}>English</p>

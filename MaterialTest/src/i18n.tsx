@@ -15,7 +15,7 @@ const resources = {
 
 const i18n = i18next.createInstance();
 
-i18n.use(initReactI18next).init({
+i18n.init({
   resources,
   lng: "ENG",
   fallbackLng: "ENG",
