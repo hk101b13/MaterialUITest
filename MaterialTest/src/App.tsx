@@ -11,6 +11,7 @@ import ENG from "./ThemeCustomProvider/assets/i18n/ENG.json";
 import CHT from "./ThemeCustomProvider/assets/i18n/CHT.json";
 import ENG_1 from "./ENG.json";
 import CHT_1 from "./CHT.json";
+import { CustomizedButton, CustomizedCowsay } from "customized-module";
 
 import "./style.scss";
 import { useState } from "react";
@@ -20,10 +21,13 @@ function App() {
   const [lang_1, setLang_1] = useState("ENG");
   const [lang_2, setLang_2] = useState("ENG");
 
+  console.log(CustomizedButton);
+
   return (
     <div style={{ padding: "10px", backgroundColor: "#f0f3e8" }}>
       <div style={{ display: "flex" }}>
         <p style={{ marginRight: "10px" }}>English</p>
+        <CustomizedButton></CustomizedButton>
         <CustomSwitch
           onChange={(e) => {
             i18n.changeLanguage(e ? "CHT" : "ENG");
