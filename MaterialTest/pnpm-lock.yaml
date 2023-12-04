@@ -17,6 +17,9 @@ dependencies:
   '@mui/material':
     specifier: ^5.14.13
     version: 5.14.13(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.28)(react-dom@18.2.0)(react@18.2.0)
+  MaterialUITest.git:
+    specifier: github:hk101b13/MaterialUITest
+    version: github.com/hk101b13/MaterialUITest/4e98b4dd16bbf9176a3fd3f8c7aceecd7c0deb3f
   antd:
     specifier: ^5.10.1
     version: 5.10.1(react-dom@18.2.0)(react@18.2.0)
@@ -3264,6 +3267,12 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  github.com/hk101b13/MaterialUITest/4e98b4dd16bbf9176a3fd3f8c7aceecd7c0deb3f:
+    resolution: {tarball: https://codeload.github.com/hk101b13/MaterialUITest/tar.gz/4e98b4dd16bbf9176a3fd3f8c7aceecd7c0deb3f}
+    name: MaterialUITest
+    version: 0.0.0
+    dev: false
 
   github.com/hk101b13/terho_button/b55d9aa21951a5a475087407c3f9b144dc412bba(vite@4.4.11):
     resolution: {tarball: https://codeload.github.com/hk101b13/terho_button/tar.gz/b55d9aa21951a5a475087407c3f9b144dc412bba}

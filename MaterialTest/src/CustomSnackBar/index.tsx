@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import styled, { Interpolation } from "@emotion/styled";
 import { ThemeContext } from "../ThemeCustomProvider";
-import CustomButton from "../CustomButton/CustomButton";
+import CustomButton from "../CustomButton";
 import { useState } from "react";
 import { Snackbar } from "@mui/material";
 import { useTranslation } from "react-i18next";

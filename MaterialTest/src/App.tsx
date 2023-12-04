@@ -1,4 +1,4 @@
-import CustomButton from "./CustomButton/CustomButton";
+import CustomButton from "./CustomButton";
 import { Antd } from "./Antd";
 import { MUI } from "./MUI";
 import { Bootstrap } from "./Bootstrap";

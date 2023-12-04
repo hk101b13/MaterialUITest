@@ -51,12 +51,10 @@ const MButton = styled(Button)<CustomButtonProps & ButtonProps>(
   }
 );
 
-const CustomButton = (props: CustomButtonProps & ButtonProps) => {
+export default (props: CustomButtonProps & ButtonProps) => {
   return (
     <div>
       <MButton {...props}>{props.children}</MButton>
     </div>
   );
 };
-
-export default CustomButton;

@@ -2,7 +2,7 @@ import { ColumnsType } from "antd/es/table";
 import { RightOutlined } from "@ant-design/icons";
 import { CustomTable } from "./CustomTable";
 import { useTranslation } from "react-i18next";
-import CustomButton from "./CustomButton/CustomButton";
+import CustomButton from "./CustomButton";
 
 const data = [
   {
