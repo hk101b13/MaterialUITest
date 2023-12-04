@@ -1,13 +1,14 @@
+// index.d.ts
 declare module "custom-button" {
   import React from "react";
   import { Interpolation, Theme } from "@emotion/react";
   import { ButtonProps } from "antd";
 
-  export interface CustomizedButtonProps {
+  export interface CustomButtonProps {
     customStyle?: Interpolation<Theme>;
   }
 
-  const CustomButton: React.FC<CustomizedButtonProps & ButtonProps>;
+  const CustomButton: React.FC<CustomButtonProps & ButtonProps>;
   export { CustomButton };
 }
 
@@ -17,7 +18,7 @@ declare module "custom-text" {
   import { CSSProperties } from "react";
   import { Interpolation, Theme } from "@emotion/react";
 
-  interface customTextProps {
+  interface CustomTextProps {
     level?: "t1" | "t2" | "t3" | "t4" | "t5";
     children?: ReactNode;
     style?: CSSProperties;
@@ -25,6 +26,6 @@ declare module "custom-text" {
     customStyle?: Interpolation<Theme>;
   }
 
-  const CustomButton: React.FC<customTextProps>;
-  export { CustomButton };
+  const CustomText: React.FC<CustomTextProps>;
+  export { CustomText };
 }
