@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from "react";
+import { useContext } from "react";
 import styled from "@emotion/styled";
 import { AddImportantToStyles } from "../ThemeCustomProvider";
 import { Interpolation, Theme } from "@emotion/react";
@@ -37,8 +37,8 @@ const MButton = styled(Button)<CustomButtonProps & ButtonProps>(
       color: `${colorScheme?.text || "black"}`,
       fontFamily: fontFamily,
       "&:not(.ant-btn-loading):hover": {
-        backgroundColor: `${colorScheme?.accent || "pink"}`,
         color: "white !important",
+        backgroundColor: `${colorScheme?.accent || "pink"}`,
       },
       "& .ant-wave": {
         "--wave-color": `${colorScheme?.accent || "lightgray"} !important`,

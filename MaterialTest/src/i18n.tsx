@@ -1,5 +1,4 @@
 // src/i18n.js
-import { initReactI18next } from "react-i18next";
 import ENG from "./assets/i18n/ENG.json";
 import CHT from "./assets/i18n/CHT.json";
 import i18next from "i18next";

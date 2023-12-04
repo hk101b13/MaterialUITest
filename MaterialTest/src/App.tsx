@@ -6,7 +6,6 @@ import { ThemeCustomProvider } from "./ThemeCustomProvider";
 import CustomizedSnackbars from "./CustomSnackBar";
 import { useTranslation } from "react-i18next";
 import CustomSwitch from "./CustomSwitch";
-import { RightOutlined } from "@ant-design/icons";
 import { CustomText } from "./CustomText";
 import ENG from "./ThemeCustomProvider/assets/i18n/ENG.json";
 import CHT from "./ThemeCustomProvider/assets/i18n/CHT.json";
@@ -14,7 +13,7 @@ import ENG_1 from "./ENG.json";
 import CHT_1 from "./CHT.json";
 
 import "./style.scss";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -22,12 +21,11 @@ function App() {
   const [lang_2, setLang_2] = useState("ENG");
 
   return (
-    <div style={{ padding: "10px", backgroundColor: "#F3FFE1" }}>
+    <div style={{ padding: "10px", backgroundColor: "#f0f3e8" }}>
       <div style={{ display: "flex" }}>
         <p style={{ marginRight: "10px" }}>English</p>
         <CustomSwitch
           onChange={(e) => {
-            // setLang(e ? "CHT" : "ENG");
             i18n.changeLanguage(e ? "CHT" : "ENG");
           }}
         />
@@ -39,7 +37,7 @@ function App() {
             console.log("AAAA");
           }}
         >
-          <CustomText level="t3">{t("Click")}</CustomText>
+          {t("Click")}
         </CustomButton>
       </div>
       <br />
@@ -125,7 +123,7 @@ function App() {
                   console.log("AAAA");
                 }}
               >
-                <CustomText level="t3">{t("Click")}</CustomText>
+                {t("Click")}
               </CustomButton>
             </div>
 

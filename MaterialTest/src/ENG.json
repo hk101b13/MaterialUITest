@@ -12,5 +12,11 @@
   "Success_message": "This is a success message!",
   "Error_message": "This is an error message!",
   "Warning_message": "This is a warning message!",
-  "Info_message": "This is an information message!"
+  "Info_message": "This is an information message!",
+  "Dessert_100g": "Dessert (100g serving)",
+  "Frozen_yogurt": "Frozen yogurt",
+  "Ice_cream_sandwich": "Ice cream sandwich",
+  "Eclair": "Eclair",
+  "Cupcake": "Cupcake",
+  "Gingerbread": "Gingerbread"
 }

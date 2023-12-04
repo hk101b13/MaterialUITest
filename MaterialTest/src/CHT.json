@@ -5,12 +5,18 @@
   "Email": "電子郵件",
   "Loading": "載入中",
   "Calories": "卡路里",
-  "Fat(g)": "脂肪(克)",
-  "Carbs(g)": "碳水化合物(克)",
-  "Protein(g)": "蛋白質(克)",
+  "Fat(g)": "脂肪 (克)",
+  "Carbs(g)": "碳水化合物 (克)",
+  "Protein(g)": "蛋白質 (克)",
   "Open_snackbar": "開啟點心棍",
   "Success_message": "這是成功訊息!",
   "Error_message": "這是錯誤訊息!",
   "Warning_message": "這是警告訊息!",
-  "Info_message": "這是通知訊息!"
+  "Info_message": "這是通知訊息!",
+  "Dessert_100g": "甜點 (每100公克)",
+  "Frozen_yogurt": "霜凍優格",
+  "Ice_cream_sandwich": "冰淇淋三明治",
+  "Eclair": "閃電泡芙",
+  "Cupcake": "杯子蛋糕",
+  "Gingerbread": "薑餅"
 }

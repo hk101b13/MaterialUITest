@@ -52,7 +52,6 @@ export const Antd = () => {
       key: "username",
       width: "20%",
       ellipsis: true,
-      onCell: (record: any, index) => ({}),
     },
     {
       title: t("Email"),
@@ -60,7 +59,6 @@ export const Antd = () => {
       key: "email",
       width: "25%",
       ellipsis: true,
-      onCell: (record: any, index) => ({}),
     },
     {
       title: t("Description"),
@@ -68,14 +66,12 @@ export const Antd = () => {
       key: "description",
       width: "50%",
       ellipsis: true,
-      onCell: (record: any, index) => ({}),
     },
     {
       dataIndex: "arrow",
       key: "arrow",
       align: "center",
       width: "5%",
-      onCell: (record: any, index) => ({}),
     },
   ];
   return (
