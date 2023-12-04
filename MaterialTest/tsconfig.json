@@ -19,7 +19,9 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "custom-button": ["index.d.ts"],
+      "custom-text": ["index.d.ts"]
     }
   },
   "include": ["src", "index.d.ts"],
