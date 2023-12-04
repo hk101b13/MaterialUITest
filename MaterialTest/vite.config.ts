@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      name: "MaterialUITest",
+      name: "materialtest",
       entry: "./src/index.tsx",
       formats: ["es"],
       fileName: () => "index.js",

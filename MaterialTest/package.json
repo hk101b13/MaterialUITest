@@ -1,8 +1,11 @@
 {
   "name": "materialtest",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hk101b13/MaterialUITest.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
