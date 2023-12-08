@@ -1,4 +1,4 @@
-import CustomButton from "./CustomButton";
+// import CustomButton from "./CustomButton";
 import { Antd } from "./Antd";
 import { MUI } from "./MUI";
 import { Bootstrap } from "./Bootstrap";
@@ -11,7 +11,12 @@ import ENG from "./ThemeCustomProvider/assets/i18n/ENG.json";
 import CHT from "./ThemeCustomProvider/assets/i18n/CHT.json";
 import ENG_1 from "./ENG.json";
 import CHT_1 from "./CHT.json";
-import { CustomizedButton, CustomizedCowsay } from "customized-module";
+import { CustomizedButton } from "customized-module";
+// import CustomButton from "./CustomButton";
+import { CustomizedCowsay } from "custom-ts-component";
+import { CustomButton } from "custom-component";
+import { QButton, QThemeProvider, QSwitch, QColors } from "qsan-design-ui";
+import { Radio } from "antd";
 
 import "./style.scss";
 import { useState } from "react";
@@ -20,14 +25,30 @@ function App() {
   const { t, i18n } = useTranslation();
   const [lang_1, setLang_1] = useState("ENG");
   const [lang_2, setLang_2] = useState("ENG");
+  const [buttonType, setButtonType] = useState<string>("info");
+  const [buttonSize, setButtonSize] = useState<string>("small");
 
   console.log(CustomizedButton);
+  console.log(QColors.palettes.error[100]);
 
   return (
     <div style={{ padding: "10px", backgroundColor: "#f0f3e8" }}>
+      <QThemeProvider
+        colorScheme={{
+          main: "black",
+          secondary: "#008392",
+          accent: "lightgray",
+          text: "white",
+        }}
+      >
+        <QButton>AAA</QButton>
+      </QThemeProvider>
+
+      <CustomizedCowsay></CustomizedCowsay>
+      <CustomizedButton></CustomizedButton>
+
       <div style={{ display: "flex" }}>
         <p style={{ marginRight: "10px" }}>English</p>
-        <CustomizedButton></CustomizedButton>
         <CustomSwitch
           onChange={(e) => {
             i18n.changeLanguage(e ? "CHT" : "ENG");
@@ -35,15 +56,52 @@ function App() {
         />
         <p style={{ marginLeft: "10px" }}>繁體中文</p>
       </div>
-      <div style={{ marginBottom: "50px" }}>
-        <CustomButton
+
+      <div
+        style={{
+          width: "1500px",
+          padding: "10px",
+          border: "2px dashed gray",
+          borderRadius: "8px",
+        }}
+      >
+        <div>
+          <>Button Type: </>
+          <Radio.Group
+            defaultValue={"info"}
+            options={["info", "warning", "error"]}
+            optionType="button"
+            buttonStyle="solid"
+            onChange={(e) => {
+              setButtonType(e.target.value);
+            }}
+          ></Radio.Group>
+        </div>
+        <br />
+        <div>
+          <>Button Size: </>
+          <Radio.Group
+            defaultValue={"small"}
+            options={["small", "middle", "large"]}
+            optionType="button"
+            buttonStyle="solid"
+            onChange={(e) => {
+              setButtonSize(e.target.value);
+            }}
+          ></Radio.Group>
+        </div>
+        <br />
+        <QButton
+          qType={buttonType}
+          qSize={buttonSize}
           onClick={() => {
             console.log("AAAA");
           }}
         >
           {t("Click")}
-        </CustomButton>
+        </QButton>
       </div>
+
       <br />
 
       <div
