@@ -3,6 +3,7 @@ import { RightOutlined } from "@ant-design/icons";
 import { CustomTable } from "./CustomTable";
 import { useTranslation } from "react-i18next";
 import CustomButton from "./CustomButton";
+import { QTable, QButton } from "qsan-design-ui";
 
 const data = [
   {
@@ -76,21 +77,21 @@ export const Antd = () => {
   ];
   return (
     <>
-      <CustomButton
+      <QButton
         onClick={() => {
           console.log("AAAA");
         }}
       >
         {t("Click")}
-      </CustomButton>
+      </QButton>
       <br />
-      <CustomTable
+      <QTable
         columns={columns}
-        tableStyle={{
-          headerColor: "#FFC09F",
-          rowColor: "#FCF5C7",
-          hoverRowColor: "#FFEE93",
-        }}
+        // tableStyle={{
+        //   headerColor: "#FFC09F",
+        //   rowColor: "#FCF5C7",
+        //   hoverRowColor: "#FFEE93",
+        // }}
         dataSource={data}
         scroll={{ y: "250px" }}
       />
